@@ -1,0 +1,81 @@
+.flag-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 1s ease-out;
+    pointer-events: none;
+}
+
+.flag-transition-overlay.fade-out {
+    opacity: 0;
+}
+
+.flag-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-screen-flag {
+    max-width: 70%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation:
+        flagAppear 3s ease-out forwards,
+        flagWave 3s ease-in-out infinite;
+    transform-origin: left center;
+}
+
+.country-name-overlay {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-shadow:
+        0 0 20px rgba(0, 0, 0, 0.8),
+        0 4px 12px rgba(0, 0, 0, 0.9),
+        0 8px 24px rgba(0, 0, 0, 0.7);
+    animation: textAppear 2s ease-out forwards;
+    z-index: 10;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes flagAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
